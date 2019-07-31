@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-12 text-center">
+            <img src="/static/assets/img/burger.png" alt="Burger" class="img-fluid mh-300px mb-2">
+            <h1 class="mb-2">Eat-Da-Burger</h1>
+            <div class="input-group w-350px mx-auto">
+                <input type="text" class="form-control" placeholder="Burger Name" id="burgerName">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="burgerSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-12 text-center mb-lg-0 mb-3">
+            <h2>Available Burgers</h2>
+            <ul class="list-group" id="notDevouredList">
+                {{#each burgers}}
+                    {{#unless devoured}}
+                    <li class="list-group-item justify-content-between d-flex align-items-center" 
+                        id="{{id}}-nd-li">
+                        {{burger_name}}
+                        <span>
+                            <button class="btn btn-primary" data-name="{{burger_name}}" data-id="{{id}}" id="{{id}}Button">Devour it!</button>
+                        </span>
+                    </li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-lg-6 col-12 text-center">
+            <h2>Devoured Burgers</h2>
+            <ul class="list-group text-left" id="devouredList">
+                {{#each burgers}}
+                    {{#if devoured}}
+                        <li class="list-group-item">{{burger_name}}</li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>

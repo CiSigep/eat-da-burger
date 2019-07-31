@@ -4,6 +4,12 @@ var router = express.Router();
 
 var burger = require("../models/burger");
 
+router.get("*", (req, res) => {
+    burger.getAll((results) => {
+        res.render("index", {burgers: results});
+    });
+});
+
 router.post("/api/burgers", (req, res) => {
     var newBurger = req.body;
 

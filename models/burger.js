@@ -4,17 +4,11 @@ var burger = {
     getAll: callback => {
         orm.selectAll("burgers", ["*"], callback);
     },
-    getNotDevoured: callback => {
-        orm.select("burgers", ["*"], { devoured: false }, callback);
-    },
-    getDevoured: callback => {
-        orm.select("burgers", ["*"], { devoured: true }, callback);
-    },
     addBurger: (name, callback) => {
-        orm.save("burgers",["burger_type", "devoured"], [name, false], callback);
+        orm.insertOne("burgers", ["burger_name", "devoured"], [name, false], callback);
     },
     updateBurger: (id, values, callback) => {
-        orm.update("burgers", values, { id: id }, callback);
+        orm.updateOne("burgers", values, { id: id }, callback);
     }
 
 }
