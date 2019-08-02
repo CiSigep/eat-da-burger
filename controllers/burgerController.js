@@ -9,6 +9,7 @@ var burger = require("../models/burger");
 router.get("*", (req, res) => {
     burger.getAll((err, results) => {
         if (err) {
+            console.log(err);
             return res.status(500).end();
         }
 
@@ -33,6 +34,7 @@ router.post("/api/burgers", (req, res) => {
     else
         burger.addBurger(newBurger.name, (err, results) => {
             if (err) {
+                console.log(err);
                 return res.status(500).end();
             }
 
@@ -46,6 +48,7 @@ router.put("/api/burgers/:id", (req, res) => {
 
     burger.updateBurger(req.params.id, { devoured: burgerUpdates.devoured }, (err, results) => {
         if (err) {
+            console.log(err);
             return res.status(500).end();
         }
 
