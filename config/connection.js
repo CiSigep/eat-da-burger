@@ -1,7 +1,10 @@
 var mysql = require("mysql");
-var path = require("path");
 
-require("dotenv").config({ path: path.join(".", "config", ".env") } );
+if(process.env.NODE_ENV === "development"){ // Use .env only locally
+    var path = require("path");
+
+    require("dotenv").config({ path: path.join(".", "config", ".env") } );
+}
 
 var connection = mysql.createConnection({
     host: process.env.DBHOST,

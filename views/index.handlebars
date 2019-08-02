@@ -6,8 +6,11 @@
             <div class="input-group w-350px mx-auto">
                 <input type="text" class="form-control" placeholder="Burger Name" id="burgerName">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="burgerSubmit">Submit</button>
+                    <button class="btn btn-primary" type="button" id="burgerSubmit">Submit</button>
                 </div>
+            </div>
+            <div class="text-left mx-auto w-350px minh-25px">
+                <span class="text-danger" id="burgerError"></span>
             </div>
         </div>
     </div>
@@ -16,15 +19,15 @@
             <h2>Available Burgers</h2>
             <ul class="list-group" id="notDevouredList">
                 {{#each burgers}}
-                    {{#unless devoured}}
-                    <li class="list-group-item justify-content-between d-flex align-items-center" 
-                        id="{{id}}-nd-li">
-                        {{burger_name}}
-                        <span>
-                            <button class="btn btn-primary" data-name="{{burger_name}}" data-id="{{id}}" id="{{id}}Button">Devour it!</button>
-                        </span>
-                    </li>
-                    {{/unless}}
+                {{#unless devoured}}
+                <li class="list-group-item justify-content-between d-flex align-items-center" id="{{id}}-nd-li">
+                    {{burger_name}}
+                    <span>
+                        <button class="btn btn-primary" data-name="{{burger_name}}" data-id="{{id}}"
+                            id="{{id}}Button">Devour it!</button>
+                    </span>
+                </li>
+                {{/unless}}
                 {{/each}}
             </ul>
         </div>
@@ -32,9 +35,9 @@
             <h2>Devoured Burgers</h2>
             <ul class="list-group text-left" id="devouredList">
                 {{#each burgers}}
-                    {{#if devoured}}
-                        <li class="list-group-item">{{burger_name}}</li>
-                    {{/if}}
+                {{#if devoured}}
+                <li class="list-group-item">{{burger_name}}</li>
+                {{/if}}
                 {{/each}}
             </ul>
         </div>

@@ -2,6 +2,10 @@
     max-height: 300px;
 }
 
+.minh-25px {
+    min-height: 25px;
+}
+
 .w-350px {
     width: 350px;
 }
